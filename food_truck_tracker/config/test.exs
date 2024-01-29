@@ -6,7 +6,7 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :food_truck_tracker, FoodTruckTracker.Repo,
-  username: "postgres",
+  username: "samanthadelafuente",
   password: "postgres",
   hostname: "localhost",
   database: "food_truck_tracker_test#{System.get_env("MIX_TEST_PARTITION")}",

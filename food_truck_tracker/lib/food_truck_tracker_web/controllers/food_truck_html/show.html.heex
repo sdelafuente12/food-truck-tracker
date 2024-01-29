@@ -1,0 +1,19 @@
+<.header>
+  <%= @food_truck.name %>
+  <:actions>
+    <.link href={~p"/food_trucks/#{@food_truck}/edit"}>
+      <.button>Edit Food Truck</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="ID"><%= @food_truck.id %></:item>
+  <:item title="Address"><%= @food_truck.address %></:item>
+  <:item title="Type"><%= @food_truck.type %></:item>
+  <:item title="Status"><%= @food_truck.status %></:item>
+  <:item title="Description"><%= @food_truck.description %></:item>
+  <:item title="Schedule"><%= @food_truck.schedule %></:item>
+</.list>
+
+<.back navigate={~p"/food_trucks"}>Back to All Food Trucks</.back>

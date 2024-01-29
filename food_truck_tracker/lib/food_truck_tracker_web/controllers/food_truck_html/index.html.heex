@@ -1,0 +1,40 @@
+<.header>
+  Listing Food trucks
+  <:actions>
+    <.link href={~p"/food_trucks/new"}>
+      <.button>New Food truck</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="food_trucks" rows={@food_trucks} row_click={&JS.navigate(~p"/food_trucks/#{&1}")}>
+  <:col :let={food_truck} label="Name">
+    <%= food_truck.name %>
+  </:col>
+  <:col :let={food_truck} label="Address">
+    <%= food_truck.address %>
+  </:col>
+  <:col :let={food_truck} label="Type">
+    <%= food_truck.type %>
+  </:col>
+   <:col :let={food_truck} label="Status">
+    <%= food_truck.status %>
+  </:col>
+  <:col :let={food_truck} label="Description">
+    <%= food_truck.description %>
+  </:col>
+  <:col :let={food_truck} label="Schedule">
+    TODO View Schedule 
+  </:col>
+  <:action :let={food_truck}>
+    <div class="sr-only">
+      <.link navigate={~p"/food_trucks/#{food_truck}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/food_trucks/#{food_truck}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={food_truck}>
+    <.link href={~p"/food_trucks/#{food_truck}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

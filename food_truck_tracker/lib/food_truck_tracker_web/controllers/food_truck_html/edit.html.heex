@@ -1,0 +1,8 @@
+<.header>
+  Edit Food truck <%= @food_truck.id %>
+  <:subtitle>Use this form to manage food_truck records in your database.</:subtitle>
+</.header>
+
+<.food_truck_form changeset={@changeset} action={~p"/food_trucks/#{@food_truck}"} />
+
+<.back navigate={~p"/food_trucks"}>Back to food_trucks</.back>
