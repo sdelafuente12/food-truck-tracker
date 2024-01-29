@@ -10,7 +10,8 @@ defmodule FoodTruckTracker.Application do
     children = [
       FoodTruckTrackerWeb.Telemetry,
       FoodTruckTracker.Repo,
-      {DNSCluster, query: Application.get_env(:food_truck_tracker, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:food_truck_tracker, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: FoodTruckTracker.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: FoodTruckTracker.Finch},

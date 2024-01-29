@@ -1,5 +1,4 @@
 defmodule FoodTruckTracker.HttpClient do
-
   @app_token System.get_env("FOOD_TRUCK_ACCESS_TOKEN")
 
   ## Leaving pagination out at the moment
@@ -8,10 +7,12 @@ defmodule FoodTruckTracker.HttpClient do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
         |> Jason.decode!()
+
       {:ok, %HTTPoison.Response{status_code: 404}} ->
-        IO.puts "Not found"
+        IO.puts("Not found")
+
       {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.inspect reason
+        IO.inspect(reason)
     end
   end
 end

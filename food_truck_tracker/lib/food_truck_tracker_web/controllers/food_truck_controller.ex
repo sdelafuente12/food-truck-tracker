@@ -67,7 +67,7 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
   end
 
   def build_and_insert_entry(entry) do
-   entry = %{
+    entry = %{
       "external_id" => entry["objectid"],
       "name" => entry["applicant"],
       "address" => entry["address"],
@@ -85,6 +85,7 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
     case FoodTrucks.create_food_truck(entry) do
       {:ok, food_truck} ->
         IO.puts("#{food_truck.external_id} added")
+
       {:error, reason} ->
         IO.puts(inspect(reason))
     end

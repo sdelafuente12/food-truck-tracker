@@ -3,7 +3,11 @@ defmodule FoodTruckTrackerWeb.FoodTruckControllerTest do
 
   import FoodTruckTracker.FoodTrucksFixtures
 
-  @create_attrs %{"external_id" => "0002", "name" => "Create Food Truck", "address" => "2000 Main St"}
+  @create_attrs %{
+    "external_id" => "0002",
+    "name" => "Create Food Truck",
+    "address" => "2000 Main St"
+  }
   @update_attrs %{"name" => "Updated Food Truck Name"}
   @invalid_attrs %{}
 

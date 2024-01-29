@@ -21,7 +21,11 @@ defmodule FoodTruckTracker.FoodTrucksTest do
     end
 
     test "create_food_truck/1 with valid data creates a food_truck" do
-      valid_attrs = %{"external_id" => "0003", "name" => "Create Food Truck", "address" => "3000 Main Street"}
+      valid_attrs = %{
+        "external_id" => "0003",
+        "name" => "Create Food Truck",
+        "address" => "3000 Main Street"
+      }
 
       assert {:ok, %FoodTruck{} = food_truck} = FoodTrucks.create_food_truck(valid_attrs)
     end
@@ -34,12 +38,16 @@ defmodule FoodTruckTracker.FoodTrucksTest do
       food_truck = food_truck_fixture()
       update_attrs = %{}
 
-      assert {:ok, %FoodTruck{} = food_truck} = FoodTrucks.update_food_truck(food_truck, update_attrs)
+      assert {:ok, %FoodTruck{} = food_truck} =
+               FoodTrucks.update_food_truck(food_truck, update_attrs)
     end
 
     test "update_food_truck/2 with invalid data returns error changeset" do
       food_truck = food_truck_fixture()
-      assert {:error, %Ecto.Changeset{}} = FoodTrucks.update_food_truck(food_truck, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               FoodTrucks.update_food_truck(food_truck, @invalid_attrs)
+
       assert food_truck == FoodTrucks.get_food_truck!(food_truck.id)
     end
 
