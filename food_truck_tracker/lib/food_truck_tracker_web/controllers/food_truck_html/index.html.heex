@@ -24,7 +24,9 @@
     <%= food_truck.description %>
   </:col>
   <:col :let={food_truck} label="Schedule">
-    TODO View Schedule 
+    <.link href={food_truck.schedule}  class="text-sm font-semibold leading-6 text-blue-500 hover:text-zinc-700">
+       View Schedule
+    </.link>
   </:col>
   <:action :let={food_truck}>
     <div class="sr-only">

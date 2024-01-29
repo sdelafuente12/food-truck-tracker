@@ -3,6 +3,7 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
 
   alias FoodTruckTracker.FoodTrucks
   alias FoodTruckTracker.FoodTrucks.FoodTruck
+  alias FoodTruckTracker.HttpClient
 
   def index(conn, _params) do
     food_trucks = FoodTrucks.list_food_trucks()
@@ -58,5 +59,34 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
     conn
     |> put_flash(:info, "Food truck deleted successfully.")
     |> redirect(to: ~p"/food_trucks")
+  end
+
+  def get_food_trucks_from_api do
+    HttpClient.get_food_trucks()
+    |> Enum.map(fn x -> build_and_insert_entry(x) end)
+  end
+
+  def build_and_insert_entry(entry) do
+   entry = %{
+      "external_id" => entry["objectid"],
+      "name" => entry["applicant"],
+      "address" => entry["address"],
+      "type" => entry["facilitytype"],
+      "status" => entry["status"],
+      "latitude" => entry["latitude"],
+      "longitude" => entry["longitude"],
+      "schedule" => entry["schedule"]
+    }
+
+    ## excluded description field from this round of implementation
+    ## as max string limit results in error
+    ## future solution would include truncation
+
+    case FoodTrucks.create_food_truck(entry) do
+      {:ok, food_truck} ->
+        IO.puts("#{food_truck.external_id} added")
+      {:error, reason} ->
+        IO.puts(inspect(reason))
+    end
   end
 end
