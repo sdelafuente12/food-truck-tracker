@@ -18,7 +18,26 @@
     <%= food_truck.type %>
   </:col>
   <:col :let={food_truck} label="Status">
-    <%= food_truck.status %>
+    <%= if food_truck.status == "APPROVED" do %>
+      <div class="text-blue-500">
+        <%= food_truck.status %>
+      </div>
+    <% end %>
+    <%= if food_truck.status == "REQUESTED" do %>
+      <div class="text-orange-500">
+        <%= food_truck.status %>
+      </div>
+    <% end %>
+    <%= if food_truck.status == "EXPIRED" do %>
+      <div class="text-red-500">
+        <%= food_truck.status %>
+      </div>
+    <% end %>
+    <%= if food_truck.status == "SUSPEND" do %>
+      <div class="text-black-500">
+        <%= food_truck.status %>
+      </div>
+    <% end %>
   </:col>
   <:col :let={food_truck} label="Description">
     <%= food_truck.description %>
