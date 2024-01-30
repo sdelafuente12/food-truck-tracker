@@ -36,4 +36,14 @@ defmodule FoodTruckTracker.FoodTrucks.FoodTruck do
       :address
     ])
   end
+
+  ## external_id, name, & address are required as of now
+  ## all other fields optional
+  ## lat/long included for future features such
+  ## as mapping/navigation
+
+  ## fields I would change with more time:
+  ## external_id would be optional in consideration of user input food trucks
+  ## status/type would be an Enum set of atoms as that data seems to come back with consistency
+  ## i.e. :approved/:expired :push_cart/:truck
 end
