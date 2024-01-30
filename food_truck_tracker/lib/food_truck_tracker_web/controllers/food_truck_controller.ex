@@ -61,6 +61,11 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
     |> redirect(to: ~p"/food_trucks")
   end
 
+  ## currently a function ran manually on application start
+  ## ideally this would be modified to run automatically
+  ## as a job nightly and/or triggered from UI
+  ## with a check for preexisting food trucks with matching
+  ## external IDs to prevent duplicates
   def get_food_trucks_from_api do
     HttpClient.get_food_trucks()
     |> Enum.map(fn x -> build_and_insert_entry(x) end)
