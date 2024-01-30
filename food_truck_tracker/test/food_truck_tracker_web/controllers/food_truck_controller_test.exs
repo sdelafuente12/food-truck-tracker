@@ -13,14 +13,14 @@ defmodule FoodTruckTrackerWeb.FoodTruckControllerTest do
   describe "index" do
     test "lists all food_trucks", %{conn: conn} do
       conn = get(conn, ~p"/food_trucks")
-      assert html_response(conn, 200) =~ "Listing Food trucks"
+      assert html_response(conn, 200) =~ "Food Trucks"
     end
   end
 
   describe "new food_truck" do
     test "renders form", %{conn: conn} do
       conn = get(conn, ~p"/food_trucks/new")
-      assert html_response(conn, 200) =~ "New Food truck"
+      assert html_response(conn, 200) =~ "Add Food truck"
     end
   end
 

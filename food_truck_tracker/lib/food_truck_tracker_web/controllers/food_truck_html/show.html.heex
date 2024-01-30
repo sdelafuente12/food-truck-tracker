@@ -13,7 +13,14 @@
   <:item title="Type"><%= @food_truck.type %></:item>
   <:item title="Status"><%= @food_truck.status %></:item>
   <:item title="Description"><%= @food_truck.description %></:item>
-  <:item title="Schedule"><%= @food_truck.schedule %></:item>
+  <:item title="Schedule">
+    <.link
+      href={@food_truck.schedule}
+      class="text-sm font-semibold leading-6 text-blue-500 hover:text-zinc-700"
+    >
+      View Schedule
+    </.link>
+  </:item>
 </.list>
 
 <.back navigate={~p"/food_trucks"}>Back to All Food Trucks</.back>
