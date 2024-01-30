@@ -71,7 +71,7 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
     |> Enum.map(fn x -> build_and_insert_entry(x) end)
   end
 
-  def build_and_insert_entry(entry) do
+  defp build_and_insert_entry(entry) do
     entry = %{
       "external_id" => entry["objectid"],
       "name" => entry["applicant"],
@@ -85,7 +85,7 @@ defmodule FoodTruckTrackerWeb.FoodTruckController do
 
     ## excluded description field from this round of implementation
     ## as max string limit results in error
-    ## future solution would include truncation
+    ## future solution would include truncation & sanitization
 
     case FoodTrucks.create_food_truck(entry) do
       {:ok, food_truck} ->
